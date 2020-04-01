@@ -48,6 +48,9 @@ def getCordinates():
     x,y,w,h = Lears[0]
     return {"x":int(x+w/4), "y":int((y+h) - 25)}
 
+@app.route("/api", methods=["GET"])
+def home():
+    return "Hello This is working"
 
 
 if __name__ == "__main__":
