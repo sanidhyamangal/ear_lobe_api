@@ -44,7 +44,7 @@ def getCordinates():
     img = base_64_to_img(base_img["base64img"])
 
     #TODO: comment the line once you get image in 720p width
-    img = image_resize(img, width=720)
+    # img = image_resize(img, width=720)
     Lears= ear_cascade.detectMultiScale(img, 1.3, 5)
     try:
         x,y,w,h = Lears[0]
