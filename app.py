@@ -42,11 +42,15 @@ ear_cascade = cv2.CascadeClassifier('cascade_file/cascade.xml')
 def getCordinates():
     base_img = request.get_json()
     img = base_64_to_img(base_img["base64img"])
-    # img = cv2.imread("image_2.jpg")
+
+    #TODO: comment the line once you get image in 720p width
     img = image_resize(img, width=720)
     Lears= ear_cascade.detectMultiScale(img, 1.3, 5)
-    x,y,w,h = Lears[0]
-    return {"x":int(x+w/4), "y":int((y+h) - 25)}
+    try:
+        x,y,w,h = Lears[0]
+        return {"x":int(x+w/4), "y":int((y+h) - 25)}
+    except Exception as e:
+        return {"error": "couldn't find any ear in the given image"}
 
 @app.route("/api", methods=["GET"])
 def home():
