@@ -48,7 +48,7 @@ def getCordinates():
     Lears= ear_cascade.detectMultiScale(img, 1.3, 5)
     try:
         x,y,w,h = Lears[0]
-        return {"x":int(x+w/4), "y":int((y+h) - 25)}
+        return {"x":int(x+w/3), "y":int((y+h) - 40)}
     except Exception as e:
         return {"error": "couldn't find any ear in the given image"}
 
